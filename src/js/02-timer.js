@@ -42,7 +42,7 @@ const options = {
   },
 };
 
-const flatpickr = new flatpickr(inputTime, options);
+const flatP = new flatpickr(inputTime, options);
 
 const timeRemaining = () => {
   startBtn.setAttribute('disabled', true);
