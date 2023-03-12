@@ -39,23 +39,31 @@ const options = {
   onClose(selectedDates) {
     startBtn.removeAttribute('disabled');
     selectedData = selectedDates[0].getTime();
+    if (selectedDates[0] < new Date()) {
+      Notify.failure('Please choose a date in the future');
+      startBtn.disabled = true;
+    } else {
+      startBtn.disabled = false;
+    }
   },
 };
 
 const flatP = new flatpickr(inputTime, options);
 
 const timeRemaining = () => {
-  startBtn.setAttribute('disabled', true);
-  inputTime.setAttribute('disabled', true);
-
+  startBtn.disabled = true;
+  inputTime.disabled = true;
   const timeId = setInterval(() => {
     const data = Date.now();
     const timeCounter = selectedData - data;
     const { days, hours, minutes, seconds } = convertMs(timeCounter);
-
+    
     if (timeCounter < 0) {
       clearInterval(timeId);
-      return Notify.failure('Please choose a date in the future');
+      Notify.success('Counting done :), you can set it again');
+     startBtn.disabled = false;
+     inputTime.disabled = false;
+     return;
     }
 
     addLeadingZero({ days, hours, minutes, seconds });

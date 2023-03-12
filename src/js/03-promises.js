@@ -15,9 +15,8 @@ const createPromise = (position, delay) => {
   });
 };
 
-const onSubmit = event => {
+const onSubmit = (event) => {
   event.preventDefault();
-
   let delay = Number(event.currentTarget.delay.value);
   let step = Number(event.currentTarget.step.value);
   let amount = Number(event.currentTarget.amount.value);
@@ -33,5 +32,7 @@ const onSubmit = event => {
     delay += step;
   }
 };
+
+
 
 form.addEventListener('submit', onSubmit);
