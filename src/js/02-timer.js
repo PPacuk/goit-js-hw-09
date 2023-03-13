@@ -8,7 +8,24 @@ const hoursCouner = document.querySelector('[data-hours]');
 const minutesCouner = document.querySelector('[data-minutes]');
 const secondsCouner = document.querySelector('[data-seconds]');
 const inputTime = document.querySelector('#datetime-picker');
+const timer = document.querySelector('.timer');
+const field = document.querySelectorAll('.field');
+const fieldValue = document.querySelectorAll('.value');
+const fieldLabel = document.querySelectorAll('.label');
 let selectedData;
+
+timer.style.display = 'flex';
+timer.style.gap = '20px';
+field.forEach(n => n.style.display = 'flex');
+field.forEach(n => n.style.flexDirection = 'column');
+fieldValue.forEach(n => n.style.display = 'flex');
+fieldValue.forEach(n => n.style.justifyContent = 'center');
+fieldValue.forEach(n => n.style.fontWeight = 'bold');
+fieldValue.forEach(n => n.style.fontSize = '40px');
+fieldLabel.forEach(n => n.style.display = 'flex');
+fieldLabel.forEach(n => n.style.justifyContent = 'center');
+fieldLabel.forEach(n => n.style.textTransform = 'uppercase');
+fieldLabel.forEach(n => n.style.fontWeight = 'bold');
 
 startBtn.setAttribute('disabled', true);
 
